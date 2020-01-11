@@ -4,6 +4,9 @@ const webpack = require("webpack");
 module.exports = {
     entry: ['react-hot-loader/patch', "./src/index.js"],
     mode: "development",
+    stats: {
+        warnings: false
+    },
     module: {
         rules: [
             {

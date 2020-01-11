@@ -65,7 +65,7 @@ const UserControl = (props) => {
     const menu = (
         <Menu>
             <Menu.Item key="0">
-                <a href="#">{props.user.email}</a>
+                <a href="#">Profile</a>
             </Menu.Item>
             <Menu.Item key="1">
                 <a href="#">Settings</a>
@@ -76,7 +76,7 @@ const UserControl = (props) => {
     );
     return (
         <Dropdown overlay={menu} trigger={['click']}>
-            <a style={{float: "right"}} className="ant-dropdown-link" href="#">
+            <a style={{float: "right",color:'#615f5f',fontSize:'x-large'}} className="ant-dropdown-link" href="#">
                 {props.user.name} <Icon type="down"/>
             </a>
         </Dropdown>
