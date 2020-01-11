@@ -1,7 +1,7 @@
 import React from 'react';
 import {Layout, Menu, Icon, Avatar, Dropdown} from 'antd';
 import Externals from "../components/External";
-import dataStore from '../dataStore/data'
+import dataStore from '../dataStore/data';
 
 const {Header, Content, Footer, Sider} = Layout;
 
@@ -30,6 +30,7 @@ export default class AppLayout extends React.Component {
                 <Sider
                     theme="light"
                     breakpoint="md"
+                    width="250px"
                     collapsedWidth="0"
                     style={{height: "100vh"}}
                 >

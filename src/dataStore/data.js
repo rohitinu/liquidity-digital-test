@@ -24,7 +24,7 @@ const data = {
                         targetRaise: 23000000,
                         preMoney: 1000000,
                         amountRaised: 1000000,
-                        location: "Europe",
+                        location: "U.S",
                         status: "In Progress",
                         marked: true
                     }, {
@@ -35,7 +35,7 @@ const data = {
                         targetRaise: 23000000,
                         preMoney: 1000000,
                         amountRaised: 1000000,
-                        location: "Europe",
+                        location: "U.S",
                         status: "Closed",
                         marked: true
                     }]
@@ -63,6 +63,35 @@ const data = {
         type: {}
     }
 }
+const dealData = {
+    id: "iss003",
+    name: "Alternative Gas Extraction",
+    category: "Space",
+    issuanceType: "Debit",
+    targetRaise: 23000000,
+    preMoney: 1000000,
+    amountRaised: 1000000,
+    valuation: 85000000,
+    status: "Closed",
+    desc: "As such, Energy Infrastructure naturally includes the traditional utilities associated with energy transport and management (coal transport trains, natural gas pipelines, electric transmission lines, etc.).",
+    requiredData: {
+        doc: 'May 24,2019',
+        coi: 'US',
+        industry: 'Renewable Resource',
+        tis: 100000000,
+        freeFloat: 100000,
+        pps: 100,
+        abs: 1000000,
+        ccs: 100000,
+        dds: 90000,
+        acs: 7000
+    },
+    commonDocs: [{fileName: 'Marketing Dec.docx', url: ''}, {fileName: 'Presentation.pptx', url: ''}],
+    confidentialDocs: [{fileName: 'Presentation Dec.docx', url: ''}, {fileName: 'Issuance.xls', url: ''}],
+    sourceParty: {name: "Rahul", email: 'rahul.yadav@gmail.com'},
+    issuer: {name: "Rohit", email: 'sharmarohit.inu@gmail.com'}
+
+}
 
 export function getMenu() {
     return Object.keys(data).map(cv => {
@@ -74,7 +103,7 @@ export function getMenu() {
 }
 
 export function getSubMenu(menuId) {
-    let subData=data[menuId].type
+    let subData = data[menuId].type
     return Object.keys(subData).map(cv => {
         return {
             name: subData[cv].name,
@@ -83,8 +112,16 @@ export function getSubMenu(menuId) {
     })
 }
 
+export function convertValue(value) {
+    return '$' + value / 1000000 + 'M'
+}
+
+export function getDealData() {
+    return dealData
+}
+
 export function getSubMenuData(menuId, subMenuId) {
     return data[menuId]["type"][subMenuId].data;
 }
 
-export default {getMenu, getSubMenu, getSubMenuData}
+export default {getMenu, getSubMenu, getSubMenuData, convertValue, getDealData}

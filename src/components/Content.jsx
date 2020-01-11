@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, Button, Table, Icon, Typography} from 'antd';
 import dataStore from '../dataStore/data'
+import DealInfo from "./DealInfo";
 const {Title} = Typography
 
 
@@ -10,14 +11,24 @@ export default class Content extends React.Component {
         this.state = {
             data: [],
             sortedInfo:null,
-            filteredInfo:null
+            filteredInfo:null,
+            visible:false
         }
         this.handleChange=this.handleChange.bind(this)
+        this.onClose=this.onClose.bind(this)
+        this.handleRowClick=this.handleRowClick.bind(this);
     }
 
     componentDidMount() {
         let data = dataStore.getSubMenuData(this.props.menuId, this.props.subMenuId)
         this.setState({data})
+    }
+    handleRowClick(e){
+        this.setState({visible:true})
+    }
+    onClose(){
+        this.setState({visible:false})
+
     }
     handleChange(pagination, filters, sorter) {
         this.setState({
@@ -25,10 +36,6 @@ export default class Content extends React.Component {
             sortedInfo: sorter,
         });
     };
-    convertValue(value){
-        return value/1000000 +'M'
-    }
-
     render() {
         let { sortedInfo, filteredInfo } = this.state;
         sortedInfo = sortedInfo || {};
@@ -64,7 +71,7 @@ export default class Content extends React.Component {
                 title: 'Target Raise',
                 dataIndex: 'targetRaise',
                 key: 'targetRaise',
-                render:(value)=>{return this.convertValue(value)},
+                render:(value)=>{return dataStore.convertValue(value)},
                 sorter: (a, b) => a.targetRaise - b.targetRaise,
                 sortOrder: sortedInfo.columnKey === 'targetRaise' && sortedInfo.order,
 
@@ -73,7 +80,7 @@ export default class Content extends React.Component {
                 title: 'Pre-Money Valuation',
                 dataIndex: 'preMoney',
                 key: 'preMoney',
-                render:(value)=>{return this.convertValue(value)},
+                render:(value)=>{return dataStore.convertValue(value)},
                 sorter: (a, b) => a.preMoney - b.preMoney,
                 sortOrder: sortedInfo.columnKey === 'preMoney' && sortedInfo.order,
 
@@ -82,7 +89,7 @@ export default class Content extends React.Component {
                 title: 'Amount Raised',
                 dataIndex: 'amountRaised',
                 key: 'amountRaised',
-                render:(value)=>{return this.convertValue(value)},
+                render:(value)=>{return dataStore.convertValue(value)},
                 sorter: (a, b) => a.amountRaised - b.amountRaised,
                 sortOrder: sortedInfo.columnKey === 'amountRaised' && sortedInfo.order,
             },
@@ -110,7 +117,8 @@ export default class Content extends React.Component {
             <Card>
                 <Button type="link" icon="plus" size="large"> Add Issuance</Button>
                 <Button type="link" icon="align-left" size="large"> Filters</Button>
-                <Table onRow={()=>{console.log("hhh")}} onRowClick={(a)=>{console.log(a)}} style={{marginTop:"20px"}} columns={columns} dataSource={this.state.data} onChange={this.handleChange}/>
+                <Table pagination={false} onRowClick={this.handleRowClick} style={{marginTop:"20px"}} columns={columns} dataSource={this.state.data} onChange={this.handleChange}/>
+                <DealInfo visible={this.state.visible} data={dataStore.getDealData()} onClose={this.onClose}/>
             </Card>
         )
     }
