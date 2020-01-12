@@ -31,7 +31,8 @@ table.special_row td + td {
     left: 0px;
     bottom: 0px;
     position: fixed;
-    width: 270px
+    width: 270px;
+    padding:20px
 }
 
 .app-content {

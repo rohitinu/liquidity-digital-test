@@ -76,7 +76,7 @@ const dealData = {
     desc: "As such, Energy Infrastructure naturally includes the traditional utilities associated with energy transport and management (coal transport trains, natural gas pipelines, electric transmission lines, etc.).",
     requiredData: {
         doc: 'May 24,2019',
-        coi: 'US',
+        coi: 'U.S',
         industry: 'Renewable Resource',
         tis: 100000000,
         freeFloat: 100000,

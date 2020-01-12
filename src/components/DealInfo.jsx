@@ -75,7 +75,7 @@ export default class DealInfo extends React.Component {
                                     </tr>
                                     <tr>
                                         <td>Price per Share</td>
-                                        <td>{data.requiredData.pps}</td>
+                                        <td>${data.requiredData.pps}</td>
                                     </tr>
                                     <tr></tr>
                                     </tbody>
