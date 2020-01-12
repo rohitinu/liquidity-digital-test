@@ -1,5 +1,5 @@
 import React from 'react';
-import {Typography, Tabs} from 'antd';
+import {Typography, Tabs, Card} from 'antd';
 import dataStore from '../dataStore/data'
 import Content from "./Content";
 
@@ -24,12 +24,12 @@ export default class Externals extends React.Component {
         return (
             <React.Fragment>
                 <Title level={2}>{this.props.menu.name}</Title>
-                <Tabs>
+                {(this.props.menu.id==='dealRoom')?(<Tabs>
                     {this.state.subMenu.map((cv, ir) => <TabPane tab={cv.name} key={ir}>
                         <Content menuId={this.props.menu.id} subMenuId={cv.id}/>
                     </TabPane>)}
+                </Tabs>):(<Card><Title level={2}>Not Defined</Title></Card>)}
 
-                </Tabs>
             </React.Fragment>
         )
     }

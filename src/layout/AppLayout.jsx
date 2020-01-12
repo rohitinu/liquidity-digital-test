@@ -30,9 +30,9 @@ export default class AppLayout extends React.Component {
                 <Sider
                     theme="light"
                     breakpoint="md"
-                    width="250px"
+                    width="270px"
                     collapsedWidth="0"
-                    style={{height: "100vh"}}
+                    style={{height: "100vh",position:"fixed"}}
                 >
                     <div style={{height: "150px", padding: "20px"}} className="logo">
                         <Avatar shape="square" size={64} src="liquidity.png"/>
@@ -43,14 +43,16 @@ export default class AppLayout extends React.Component {
                             <span className="nav-text">{cv.name}</span>
                         </Menu.Item>)}
                     </Menu>
+                    <Footer style={{left:'0px',bottom:'0px',position:'fixed',width:'270px'}}>Contact us if you have question: <a href='support@liquidity.digital'>support@liquidity.digital</a></Footer>
                 </Sider>
                 <Layout>
                     <Header style={{background: '#FAFAFB'}}><UserControl user={this.props.user}/></Header>
                     <Content style={{margin: '0'}}>
                         {(this.state.menu.length > 0)?(<div style={{
-                            padding: 24,
+                            padding: 20,
                             height: "100vh",
-                            background: '#FAFAFB'
+                            background: '#FAFAFB',
+                            marginLeft:'270px'
                         }}><Externals menu={this.state.menu[this.state.selectedKey]}/></div>):(null)}
 
                     </Content>
