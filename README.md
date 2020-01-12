@@ -3,7 +3,7 @@
 2. `npm install`
 3. `npm run start`
 
-#Notes:
+# Notes:
 * Only given sample Pages are Working.
 * Data are store in data.js and functions are exposed to work with.
 * Click on Star is working
