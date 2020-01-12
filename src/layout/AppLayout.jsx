@@ -34,27 +34,21 @@ export default class AppLayout extends React.Component {
                     collapsedWidth="0"
                     style={{height: "100vh",position:"fixed"}}
                 >
-                    <div style={{height: "150px", padding: "20px"}} className="logo">
+                    <div className="logo liq-logo">
                         <Avatar shape="square" size={64} src="liquidity.png"/>
                     </div>
-                    <Menu style={{height: "100%"}} mode="inline" onClick={this.handleChange}
+                    <Menu style={{height: "100%"}}  mode="inline" onClick={this.handleChange}
                           defaultSelectedKeys={['0']}>
                         {this.state.menu.map((cv, ir) => <Menu.Item key={ir}>
                             <span className="nav-text">{cv.name}</span>
                         </Menu.Item>)}
                     </Menu>
-                    <Footer style={{left:'0px',bottom:'0px',position:'fixed',width:'270px'}}>Contact us if you have question: <a href='support@liquidity.digital'>support@liquidity.digital</a></Footer>
+                    <Footer className='app-footer'>Contact us if you have question: <a href='support@liquidity.digital'>support@liquidity.digital</a></Footer>
                 </Sider>
                 <Layout>
                     <Header style={{background: '#FAFAFB'}}><UserControl user={this.props.user}/></Header>
                     <Content style={{margin: '0'}}>
-                        {(this.state.menu.length > 0)?(<div style={{
-                            padding: 20,
-                            height: "100vh",
-                            background: '#FAFAFB',
-                            marginLeft:'270px'
-                        }}><Externals menu={this.state.menu[this.state.selectedKey]}/></div>):(null)}
-
+                        {(this.state.menu.length > 0)?(<div className='app-content'><Externals menu={this.state.menu[this.state.selectedKey]}/></div>):(null)}
                     </Content>
                 </Layout>
             </Layout>
@@ -78,7 +72,7 @@ const UserControl = (props) => {
     );
     return (
         <Dropdown overlay={menu} trigger={['click']}>
-            <a style={{float: "right",color:'#615f5f',fontSize:'x-large'}} className="ant-dropdown-link" href="#">
+            <a className="ant-dropdown-link user-info" href="#">
                 {props.user.name} <Icon type="down"/>
             </a>
         </Dropdown>

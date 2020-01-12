@@ -5,7 +5,7 @@ import DealInfo from "./DealInfo";
 const {Title} = Typography
 
 
-export default class Content extends React.Component {
+export default class TableContent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -36,6 +36,15 @@ export default class Content extends React.Component {
             sortedInfo: sorter,
         });
     };
+    handleFavMarking(row){
+        let {data}=this.state;
+        data.map(cv=>{
+            if(cv.id===row.id){
+                cv.marked=!row.marked
+            }
+        })
+        this.setState({data})
+    }
     render() {
         let { sortedInfo, filteredInfo } = this.state;
         sortedInfo = sortedInfo || {};
@@ -46,9 +55,9 @@ export default class Content extends React.Component {
                 dataIndex: 'marked',
                 key: 'marked',
                 width:'50px',
-                render:(value) => {
+                render:(value,row) => {
                     let color=value?'#2345C7':'#cbccbe'
-                    return <Icon style={{ fontSize: '16px', color: color }} theme={value?"filled":"outlined"} type="star" />}
+                    return <Icon style={{ fontSize: '20px', color: color }} onClick={(e)=>{e.stopPropagation();this.handleFavMarking(row)}} theme={value?"filled":"outlined"} type="star" />}
             },
             {
                 title: 'Name & Industry Type',

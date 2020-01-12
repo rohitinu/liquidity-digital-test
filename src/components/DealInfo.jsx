@@ -1,8 +1,8 @@
 import React from 'react';
 import {Button, Card, Col, Divider, Drawer, Row, Tabs} from 'antd';
 import dataStore from '../dataStore/data'
-import Content from "./Content";
 import Title from "antd/es/typography/Title";
+import Icon from "antd/es/icon";
 
 const {TabPane} = Tabs;
 
@@ -23,11 +23,12 @@ export default class DealInfo extends React.Component {
         return (
             <Drawer
                 placement="right"
-                closable={true}
+                closable={false}
                 onClose={this.props.onClose}
                 visible={this.props.visible}
                 width="550px"
             >
+                <Row><Col span={20}/><Col span={4}><Button type="default" icon="close" onClick={this.props.onClose} size="small">Close</Button></Col></Row>
                 <Tabs size="large">
                     <TabPane style={{background: '#FAFAFB'}} forceRender={true} tab="Deal Info" key={1}>
                         <Row>
@@ -83,11 +84,11 @@ export default class DealInfo extends React.Component {
                         </Card>
                         <Title style={{marginTop: '10px'}} level={4}>Common Documents</Title>
                         {data.commonDocs.map(cv => <Row><Col span={18}>{cv.fileName}</Col><Col span={6}><Button
-                            type="link" icon="download" size="small"> Download</Button></Col></Row>
+                            type="link" icon="download" size="small" href='https://calibre-ebook.com/downloads/demos/demo.docx'> Download</Button></Col></Row>
                         )}
                         <Title style={{marginTop: '10px'}} level={4}>Confidential Documents</Title>
                         {data.confidentialDocs.map(cv => <Row><Col span={18}>{cv.fileName}</Col><Col span={6}><Button
-                            type="link" icon="download" size="small"> Download</Button></Col></Row>
+                            type="link" icon="download" size="small" href='https://calibre-ebook.com/downloads/demos/demo.docx'> Download</Button></Col></Row>
                         )}
                         <Title style={{marginTop: '10px'}} level={4}>Source Party</Title>
                         <Row style={{color: '#000', fontWeight: '600px'}}>{data.sourceParty.name}</Row>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Typography, Tabs, Card} from 'antd';
 import dataStore from '../dataStore/data'
-import Content from "./Content";
+import TableContent from "./TableContent";
 
 
 const {TabPane} = Tabs;
@@ -26,7 +26,7 @@ export default class Externals extends React.Component {
                 <Title level={2}>{this.props.menu.name}</Title>
                 {(this.props.menu.id==='dealRoom')?(<Tabs>
                     {this.state.subMenu.map((cv, ir) => <TabPane tab={cv.name} key={ir}>
-                        <Content menuId={this.props.menu.id} subMenuId={cv.id}/>
+                        <TableContent menuId={this.props.menu.id} subMenuId={cv.id}/>
                     </TabPane>)}
                 </Tabs>):(<Card><Title level={2}>Not Defined</Title></Card>)}
 
